@@ -118,6 +118,11 @@ a:hover, a:focus {
     color: #8a8a8a;
 }
 
+img {
+    width: 100%;
+    padding: 1rem;
+}
+
 .light-section {
     background-color: #1a1a1a;
     padding: 0.25rem 1rem;
