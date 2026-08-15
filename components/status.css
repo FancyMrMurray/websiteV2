@@ -1,0 +1,28 @@
+.status {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 10pt;
+}
+
+.status__prompt {
+    color: #fafafa;
+    margin-left: 1em;
+}
+
+.status__load--idle {
+    color: #aaaaaa;
+}
+
+.status__load--success {
+    color: green;
+}
+
+.status__load--failed {
+    color: red;
+}
+
+.status__load--in-progress {
+    color: rgb(0, 166, 255);
+}

@@ -1,0 +1,238 @@
+html, body {
+    background-color: rgb(15, 15, 15);
+
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+
+    padding: 0;
+    margin: 0;
+
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.drop-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 33vw;
+    max-width: 500px;
+    min-width: 250px;
+    height: 10vh;
+    
+    padding: 1em;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    color: slategray;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+.wrapper-horiz {
+    display: flex;
+    flex-flow: row nowrap;
+
+    justify-content: space-around;
+    align-items: center;
+
+    min-width: 810px;
+    min-height: 300px;
+    height: auto;
+    width: auto;
+
+}
+
+.waveform-column {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.mixer-strip {
+    display: flex;
+    flex-flow: column nowrap;
+
+    color: #fafafa;
+    align-items: center;
+}
+
+.fader {
+    writing-mode: vertical-lr;
+    height: 30vh;
+    min-height: 250px;
+    direction: rtl;
+}
+
+.solo-button {
+    width: 4vh;
+    min-width: 20px;
+    aspect-ratio: 1/1;
+}
+
+.fuck {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+
+    background-color: rgb(45, 45, 45);
+    color: #fafafa;
+
+    border-color: rgb(150, 150, 150);
+    font-size: 18pt;
+
+    padding: 1em;
+}
+
+#main-fader {
+    height: 26vh;
+    min-height: 230px;
+}
+
+#final-buttons {
+    justify-content: space-around;
+
+    height: 40vh;
+}
+
+#loadingGUI {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 9pt;
+    color: #fafafa;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.loadingGUIItem {
+    padding-right: 8pt;
+    padding-top: 0;
+}
+
+#top-bar {
+    display: flex;
+    flex-direction: row;
+    width: calc(100%-60px);
+    min-width: 810px;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#title-and-exit {
+    display: flex;
+    flex-direction: row-reverse;
+
+    align-items: flex-end;
+}
+
+#title {
+    color: #fafafa;
+    padding-left: 36pt;
+    margin: 0;
+}
+
+#exit {
+    color: rgb(170, 170, 240);
+    font-size: 18pt;
+}
+
+#main {
+    min-height: 100vh;
+}
+
+@property --progress-value {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 0;
+}
+
+:root {
+  --progress-bar-color: #cfd8dc;
+  --progress-value-color: #2196f3;
+  --progress-empty-color-h: 180;
+  --progress-empty-color-s: 80;
+  --progress-empty-color-l: 50;
+  --progress-filled-color-h: 250;
+  --progress-filled-color-s: 80;
+  --progress-filled-color-l: 50;
+}
+
+progress[value] {
+  display: block;
+  position: relative;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border: 0;
+  --border-radius: 10px;
+  border-radius: var(--border-radius);
+  counter-reset: progress var(--progress-value);
+  --progress-value-string: counter(progress) '%';
+  --progress-max-decimal: calc(var(--value, 0) / var(--max, 0));
+  --progress-value-decimal: calc(var(--progress-value, 0) / var(--max, 0));
+  @supports selector(::-moz-progress-bar) {
+    --progress-value-decimal: calc(var(--value, 0) / var(--max, 0));
+  }
+  --progress-value-percent: calc(var(--progress-value-decimal) * 100%);
+  --progress-value-color: hsl(
+    calc((var(--progress-empty-color-h) + (var(--progress-filled-color-h) - var(--progress-empty-color-h)) * var(--progress-value-decimal)) * 1deg)
+    calc((var(--progress-empty-color-s) + (var(--progress-filled-color-s) - var(--progress-empty-color-s)) * var(--progress-value-decimal)) * 1%)
+    calc((var(--progress-empty-color-l) + (var(--progress-filled-color-l) - var(--progress-empty-color-l)) * var(--progress-value-decimal)) * 1%)
+  );
+  animation: calc(0.01s * var(--progress-max-decimal)) linear 0.5s 1 normal both progress;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: var(--progress-bar-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+progress[value]::-webkit-progress-value {
+  width: var(--progress-value-percent) !important;
+  background-color: var(--progress-value-color);
+  border-radius: var(--border-radius);
+}
+
+progress[value]::-moz-progress-bar {
+  width: var(--progress-value-percent) !important;
+  background-color: var(--progress-value-color);
+  border-radius: var(--border-radius);
+}
+
+progress[value]::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --size: 32px;
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
+  left: var(--progress-value-percent);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--progress-value-color);
+  border-radius: 50%;
+  content: attr(value);
+  content: var(--progress-value-string, var(--value));
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+@keyframes progress {
+	from {
+		--progress-value: 0;
+	} to {
+		--progress-value: var(--value);
+	}
+}

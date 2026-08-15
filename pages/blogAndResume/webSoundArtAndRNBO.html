@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MurrayRobertson\\Blog&Research\\WebSoundArt&RNBO</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/base.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+            <a href="/index.html">MurrayRobertson</a>\\<a href="/pages/blogAndResearch.html">Blog&Research</a>\\<a href="/pages/blogAndResume/webSoundArtAndRNBO.html">WebSoundArt&RNBO</a>
+        </nav>
+    </header>
+
+    <section class="article-head">
+        <h1 class="article-head__title">Web Sound Art & RNBO</h1>
+        <div class="article-head__subtitle-wrapper">
+            <h2 class="article-head__subtitle"><i>Taking Back the Web</i></h2>
+            <h3 class="article-head__date">June 16, 2026</h3>
+        </div>
+    </section>
+
+    <section class="content-description">
+        <p style="text-indent: 0;">See the interactive project <a href="">here</a>.</p>
+    </section>
+
+    <div class="dark-section">
+        <h2>I. Introduction</h2>
+        <p>The internet- the amorphous monolith created by all of our computers being able to almost instantly communicate with every single other computer- has laid its worth as being the centerpoint of a vast number of peoples’ lives. Is this a good thing? Not really anymore. <a href="#reference1">(1)</a>. But it still is good <a href="#reference2">(2)</a>. Or maybe not? <a href="#reference3">(3)</a> Well at least we know it's important <a href="#reference4">(4)</a>.</p>
+        <p>In thinking about this topic from an artist’s perspective, there is an obvious benefit of the internet in its ability to disperse content (whether that be “media,” “art,” “content,” or “slop”) to an audience. It allows for small independent artists to, on a low budget, be discovered by fans hundreds of miles from their concert stages and galleries. But, the pervasiveness of content means an economy of attention <a href="#reference5">(5)</a>. What can we do as artists to harness the power of the internet without squeezing dry the world of its ability to pay attention to what is being said?</p>
+        <p>There was an era of the internet where being a creator was not a losing battle. The internet that spawned the y2k aesthetic, with customized myspace pages and that lacked corporate presence. When I look at the lingering aesthetics of the internet (the one I am too young to have experienced), I see one big thing lacking today: intentionality around space. Many artists rely on platforms that are not theirs and in a way lose the ability to be intentional about the space where their art lives. In the vast digital canvas of HTML this should be the opposite. It should be physical galleries where artists must place their art in someone else’s space. The internet should be the place of infinite customizability.</p>
+        <p>Obviously that is wishful thinking to some degree, but there is still room for some intentionality. The folks at <a href="https://websoundart.org/">websoundart.org</a> certainly believe so. So, as sound artists, how do we take back the internet? It requires the effort to learn how to build in digital space (*cough* coding *cough*), and the compositional mindset that comes with computer music and software programming. But it is very possible within numerous frameworks to develop the appropriate program: all we have to do is choose one and then start creating.</p>
+    </div>
+    <div class="dark-section">
+        <h2>II. Programming Framework</h2>
+        <p>The framework for embedded interactive sound I have chosen is traditional web development languages HTML, CSS, and JavaScript combined with the audio specific language RNBO. RNBO is developed by Cycling74 as a part of the MaxMSP visual DSP language. RNBO code is edited and compiled inside the MaxMSP environment and can be exported to a variety of formats: in this case WebAssembly for use with JavaScript. After the sound engine is built using RNBO, it can be controlled using JavaScript with an interface written in HTML and CSS.</p>
+        <p>RNBO’s advantages lie in its similarities to MaxMSP, a language many sound artists are already either familiar with or fluent in. Its graphical nature allows for complicated signal processing to be displayed as a network of cables (visually resembling a modular synthesizer where patch cables connect various analog signal generators). Because there are a vast number of resources for learning and debugging MaxMSP code it is easy to construct modular systems where MaxMSP components are translated into RNBO syntax with little difference in functionality.</p>
+        <p>This exploration of RNBO as a tool does not aim to compare directly the two syntaxes, but throughout the process of building this project it was a common occurrence to have two windows- one with a functioning max patch and the other with a slightly mirrored RNBO environment- open simultaneously.</p>
+        <p>A compiled RNBO patch receives data in multiple formats: “inports,” “params,” and outputs data through “outports” and signal outputs. Setting up the interface with JavaScript just requires exposing the I/O and passing data into RNBO with a script. Cycling74 provides a debug template which includes these scripts; for this project the template served as a base for the rest of the code. This made the initial setup process extremely simple.</p>
+        <p>The “game” aspect (i.e. the narrative text, user input, distance, and perlin noise field) were all constructed using java script and then the data points were passed into RNBO for the sound component. In this context, RNBO served essentially the same function as Wwise or FMOD would in the context of a game engine. The workflow is also similar: RNBO code is written and tested using the MaxMSP environment, code is compiled, and then is tested on the website. The exact same process can be seen with Unity and Wwise, for example: audio triggers and logic are set up, tested within the Wwise environment, soundbanks are generated, and then inside the Unity editor the same sound testing process occurs in the game environment.</p>
+        <p>The resulting framework is extremely flexible and lightweight. The only loading times occur upfront as the RNBO dependency is fetched, the WebAssembly is parsed, and audio files are loaded into buffers. This took around 4-5 seconds for a complex piece of code with about 85MB of audio files being served and a 612KB (.json) RNBO patch. Alongside the larger game of “TryAllYouWant,” I was able to use the exact same workflow to build a smaller, more lightweight homepage unit which still has larger audio files but is a smaller piece of WebAssembly to decode: 26MB of audio and 363KB RNBO patch. While a 4-5 second load time would be unreasonable for use cases like displaying a playlist of audio files, the upfront loading time is exchanged for a completely client side synthesis engine. This makes the more complex task of real-time synthesis and audio playback much more reasonable for an interactive experience.</p>
+    </div>
+    <div class="dark-section">
+        <h2>III. Compositional Result(s)</h2>
+        <p>“Composing” a piece of sound art in this format first and foremost requires an understanding of the possibilities with and the requirements of the underlying structure of functionality. This is true of any interactive system- whichever framework drives the interactivity also limits it. Where MaxMSP and RNBO have succeeded is by-and-large having less limitations than possibilities. This is also true of JavaScript and the various functionalities of web architecture: we (as the audio designers) can interface with the user of a site in numerous ways including the direct access of user hardware like mouse and keyboard data. MDN’s documentation for these interactive functions are extremely well written and easy to parse for artists whose focus has never been involved in software development.</p>
+        <p>Early compositional choices were to have the piece be modular and largely collage-based: where smaller sound snippets were spread out across the larger environment. In thinking of form, there was a decision made to stretch the time aspect of the piece across 50 unspecified units and to create a random field of values that could be read as the user moved across 2D space. Using a perlin noise algorithm, we can imagine this virtual landscape as being a random generation of hills and valleys where the noise values are comparable to the elevation at that point.</p>
+        <p>The user moves by providing inputs (pressing keys or moving the mouse) and slowly incrementing their position forwards in either the x or y axis (north or east). Position is displayed as a vector: distance and angle relative to the starting point of (0, 0). This creates an atmosphere of mystery where the user might not be sure what their input was directly affecting- a mood desirable for the piece’s aesthetic. This aesthetic was further implemented in deciding that the elevation value (seen across the code named “noise return”) would not be a labelled value at all.</p>
+        <p>In the sound, the various field recording and synthesis modules are modulated by the same LFOs and filter resonators, but there is also a cross modulation component that increases in intensity as the distance progresses. As the piece progresses towards the “apex” of 50, the sound becomes more affected by modulation sources. These decisions all came from a desire to balance the exploratory nature with a more linear progression of intensity. While the sound at any one given moment is random, it still follows a set progression in intensity.</p>
+        <p>The composition of this piece takes advantage of simple interface options- keyboard and mouse. Early iterations of the piece also saw interaction with gamepads (game controllers like Xbox, Playstation, etc.). The inputs control various RNBO parameters but they do not access synthesis parameters directly. Rather, the input is passed into RNBO via parameters and inports named “keyCode,” “mouse_x” etc. and the mapping to parameters is done inside the RNBO code. Intensity is progressed in the degree to which mouse and keyboard inputs affect the sound. In a way, it doesn’t just become more chaotic, it just becomes more responsive to the user’s input.</p>
+        <p>The last component, the narrative structure, was inspired by web artwork where the computer is seen as an adversary. The computer, or maybe the code itself, being a barrier fits closely with the aesthetic of fighting back against the machine to create art on the web. There is also a tactile feeling of struggle against the code, where it should be uncomfortable to have to provide so much input just to move small amounts and discover new sounds.</p>
+    </div>
+    <div class="light-section">
+        <h2>IV. Conclusion</h2>
+        <p>The framework allowed for a vast number of compositional choices. Enough, in fact, that I think the overwhelm of possibility set in as soon as I had realized what the JS/RNBO combo would make possible. But, I think that this shaped the result immensely. It was the act of exploring possibility that allowed for different interactive elements to take shape- especially the “game” aspects that mostly live inside of the JS.</p>
+        <p>This method for web art is now, thanks to the Web Audio API and tools for compiling to WebAssembly, extremely accessible and learnable. The app that I made for my homepage is a great example of small compositional units that can be woven into the fabric of artists’ portfolios and biographies. And, it shows that we as sound artists specifically care deeply about the way our sites sound as much as we do how they look.</p>
+        <p>I want to thank the authors who have published on websoundart.org for their organization of numerous resources into a single place that is memorable and accessible. That is something that reflects what the internet can be, not what it is turning into.</p>
+    </div>
+    <div class="dark-section">
+        <h2>Tutorials used during this project:</h2>
+        <p><a href="https://www.brandonlincolnsnyder.com/single-post/p5-sound-crash-course-javascript-for-sound-artists">P5.Sound Crash Course: JavaScript for Sound Artists</a> - Brandon Lincoln Snyder</p>
+        <p><a href="https://websoundart.org/articles/20231119-max-and-browsers">Tutorial 5: Max/MSP and the Browser</a> - Becky Brown</p>
+        <p><a href="https://websoundart.org/articles/20230702-tutorial-2-web-audio">Tutorial 2: Web Audio API</a> - Becky Brown</p>
+        <p><a href="https://websoundart.org/articles/20230521-tutorial-1">Tutorial 1: Where To Start?</a> - Becky Brown</p>
+        <h2 style="padding-top: 24pt;">Writings on Web Art Philosophy:</h2>
+        <p><a href="https://www.brandonlincolnsnyder.com/single-post/online-communities-for-web-based-sound-art">Online Communities for Web-Based Sound Art</a> - Brandon Lincoln Snyder</p>
+        <p><a href="https://websoundart.org/articles/20230507-interactive-web-sound-art">Interactive Web Sound Art</a> - Brandon Lincoln Snyder</p>
+        <p><a href="https://websoundart.org/articles/20231210-transforming-user-into-audience">Aesthetics 3: Web Art and the Potential of Transforming a User into Audience</a> - Philipp Mayer</p>
+        <p><a href="https://websoundart.org/articles/20230603-aesthetics-1">The Aesthetics of Web-Based Sound Art (1): The Opacity of the Web as a Medium in Web-Based Sound Art</a> - Philipp Mayer</p>
+        <h2 style="padding-top: 24pt;">Materials for a non-RNBO based approach:</h2>
+        <p><a href="https://websoundart.org/articles/20240218_tutorial-8-embedding-wasm-creative-coding.html">Tutorial 8: Experimenting with WebAssembly through creative coding platforms</a> - Becky Brown</p>
+        <p><a href="https://websoundart.org/articles/20240407_some-file-considerations.html">Tutorial #9: Working with audio files</a> - Becky Brown</p>
+    </div>
+    <div class="dark-section">
+        <h2>References</h2>
+        <p id="reference1">1: Diomidous, M., Chardalias, K., Magita, A., Koutonias, P., Panagiotopoulou, P., & Mantas, J. "Social and Psychological Effects of the Internet Use." <i>Acta Informatica Medica</i> 24, no. 1 (2016): 66–68. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4789623/">https://pmc.ncbi.nlm.nih.gov/articles/PMC4789623/</a>.</p>
+        <p id="reference2">2: Stansberry, Kathleen, Janna Anderson, and Lee Rainie. "The Internet Will Continue to Make Life Better." Section 4 in <i>The Next 50 Years of Digital Life.</i> Pew Research Center, October 28, 2019. <a href="https://www.pewresearch.org/internet/2019/10/28/4-the-internet-will-continue-to-make-life-better/">https://www.pewresearch.org/internet/2019/10/28/4-the-internet-will-continue-to-make-life-better/</a>.</p>
+        <p id="reference3">3: TEDMED. "Screens, Stress, and Struggling Kids- Jonathan Haidt Breaks It Down." YouTube video, 41:20, <a href="https://www.youtube.com/watch?v=W648j-oG-8Y">https://www.youtube.com/watch?v=W648j-oG-8Y</a></p>
+        <p id="reference4">4: "Why Is the Internet So Important?" NJ Connect. Last modified July 3, 2023. <a href="https://www.nj.gov/connect/internet-101/why-important/">https://www.nj.gov/connect/internet-101/why-important/</a>.</p>
+        <p id="reference5">5: Masoud, Rai Hasen. "The Attention Economy and the Collapse of Cognitive Autonomy." <i>Denny Center for Democratic Capitalism Blog</i>. Gerogetown Law, July 15, 2025. <a href="https://www.law.georgetown.edu/denny-center/blog/the-attention-economy/">https://www.law.georgetown.edu/denny-center/blog/the-attention-economy/</a>.</p>
+    </div>    
+    <section class="site-footer">
+        <p>© 2026 Murray Robertson. This domain and everything accessible on it is protected by U.S. copyright law.</p>
+        <p>No material/content/media/code on this site or ANY page under the same domain (murrayrobertsonmusic.com) may be used for the training of AI models in any capacity under ANY circumstances.</p>
+    </section>
+</body>
+</html>

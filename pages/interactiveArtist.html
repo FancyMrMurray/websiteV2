@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MurrayRobertson\\InteractiveArtist</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/components/strips/strips.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+            <a href="/index.html">MurrayRobertson</a>\\<a href="/pages/interactiveArtist.html">InteractiveArtist</a>
+        </nav>
+    </header>
+
+    <section class="strips">
+        <a class="strip strip--link" href="/pages/interactiveArt/Mooring/index.html">
+            <video class="strip__bg-video" autoplay loop muted playsinline preload="metadata"
+                src="https://media.murrayrobertsonmusic.com/mooring_background.mov"></video>
+            <div class="strip__gradient"></div>
+            <div class="strip__text">
+                <h2 class="strip__text--title">Mooring2</h2>
+                <p class="strip__text--desc">Generative Granular Composition -- 2026</p>
+            </div>
+            <span class="strip__icon">&#x25B6;</span>
+        </a>
+        <a class="strip strip--link" href="/pages/interactiveArt/Try All You Want/index.html">
+            <video class="strip__bg-video" autoplay loop muted playsinline preload="metadata"
+                src="https://media.murrayrobertsonmusic.com/tryallyouwant.mov"></video>
+            <div class="strip__gradient"></div>
+            <div class="strip__text">
+                <h2 class="strip__text--title">TryAllYouWant</h2>
+                <p class="strip__text--desc">Interactive web-based sound art -- 2026</p>
+            </div>
+            <span class="strip__icon">&#x25B6;</span>
+        </a>
+    </section>
+    
+    <div class="overlay">
+        <button class="overlay__close-btn" aria-label="Close">&#x2715;</button>
+        <video class="overlay__video" controls playsinline preload="none"></video>
+        <div class="overlay__metadata">
+            <h2 class="overlay__metadata--title"></h2>
+            <p class="overlay__metadata--desc"></p>
+        </div>
+    </div>
+</body>
+</html>

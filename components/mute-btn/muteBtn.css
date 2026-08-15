@@ -1,0 +1,11 @@
+.mute-btn {
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.mute-btn img {
+    width: 5vw;
+    max-width: 40px;
+    aspect-ratio: 1 / 1;
+}

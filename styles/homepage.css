@@ -1,0 +1,12 @@
+.artist-statement {
+    width: 100%;
+    min-height: 30vh;
+    padding: 5vh 4vw;
+
+    background-image: url(/assets/trombonePlaying.jpg);
+    background-position: center;
+    background-size: cover;
+
+    font-size: calc(12pt + 0.7vw);
+    outline: 5px solid rgb(60, 60, 60);
+}
