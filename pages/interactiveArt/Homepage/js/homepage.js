@@ -112,7 +112,7 @@ async function setup() {
             firstClick = false;
             isMuted = false;
             outputNode.gain.value = 1;
-            volumeImg.src = 'Homepage/img/at-volume.svg';
+            volumeImg.src = '/components/mute-btn/assets/at-volume.svg';
             document.querySelector('.status__prompt').innerHTML = "audio enabled";
         }
     }
@@ -127,7 +127,7 @@ async function setup() {
     volumeButton.addEventListener('click', () => {
         isMuted = !isMuted; // set state
         outputNode.gain.value = isMuted ? 0 : 1; // mute the output
-        volumeImg.src = isMuted ? 'Homepage/img/at-mute.svg' : 'Homepage/img/at-volume.svg'; // switch the image
+        volumeImg.src = isMuted ? '/components/mute-btn/assets/at-mute.svg' : '/components/mute-btn/assets/at-volume.svg'; // switch the image
         volumeImg.alt = isMuted ? 'Unmute' : 'Mute'; // switch the alt text
         console.log(outputNode.gain.value);
     });
