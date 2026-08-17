@@ -210,6 +210,11 @@ img {
     background-color: #1a1a1a;
     padding: 5vh 4vw;
     outline: 5px solid rgb(60, 60, 60);
+    overflow: hidden;
+    background-image: url(/assets/icons/dark_circle/favicon_dark_circle.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 @media (max-width: 800px) {
