@@ -188,6 +188,22 @@ function distanceCalculation(device) {
         posY = evt.clientY;
     });
 
+    window.addEventListener("touchstart", (evt) => {
+        const touch = evt.touches[0];
+        deltaX = Math.abs(posX - touch.clientX);
+        deltaY = Math.abs(posY - touch.clientY);
+        posX = touch.clientX;
+        posY = touch.clientY;
+    });
+    
+    window.addEventListener("touchmove", (evt) => {
+        const touch = evt.touches[0];
+        deltaX = Math.abs(posX - touch.clientX);
+        deltaY = Math.abs(posY - touch.clientY);
+        posX = touch.clientX;
+        posY = touch.clientY;
+    });
+
     window.addEventListener("resize", () => {
         composerRect = document.getElementById("composer").getBoundingClientRect();
         composerPosition = {
