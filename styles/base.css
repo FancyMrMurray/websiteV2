@@ -75,6 +75,7 @@ a:hover, a:focus {
 
 .hero {
     width: 100%;
+    text-align: center;
 }
 
 .hero__title-wrapper {
@@ -97,12 +98,12 @@ a:hover, a:focus {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
 }
 
 .hero__role {
     font-size: calc(5pt + 2vw);
-    margin-top: 5vh;
-    margin-bottom: 10vh;
 }
 
 .hero__title-wrapper a {
