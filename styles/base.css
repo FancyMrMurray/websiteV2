@@ -56,6 +56,10 @@ a:hover, a:focus {
     text-align: right;
 }
 
+audio {
+    padding: 1rem;
+}
+
 .content-description {
     padding: 0.25rem 1rem;
     margin: 20px 0;
