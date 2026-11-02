@@ -26,6 +26,9 @@ let cells = [];
 //create audio context FIRST
 let context = new AudioContext();
 loadAll();
+const gainDown = new GainNode(context);
+gainDown.gain.setValueAtTime(0.1, context.currentTime);
+gainDown.connect(context.destination);
 
 //create all the cells
 for (let i = 0; i < 30; i++) {
@@ -90,7 +93,8 @@ function playSound(good = true) {
     const bufferNode = new AudioBufferSourceNode(context, {
         "buffer": buffer,
     })
-    bufferNode.connect(context.destination);
+    
+    bufferNode.connect(gainDown);
     bufferNode.start(context.currentTime);
     console.log(`Playing`)
 }
