@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Paper Mono";
+    src: url("/assets/fonts/PaperMono[wght].woff2");
+}
+
 .artist-statement {
     width: 100%;
     min-height: 30vh;
@@ -9,4 +14,70 @@
 
     font-size: calc(12pt + 0.7vw);
     outline: 5px solid rgb(60, 60, 60);
+}
+
+.code-calendar-wrapper {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10vh 4vw;
+    border-bottom: dashed #fafafa;
+}
+
+.code-calendar {
+    width: fit-content;
+    height: auto;
+    display: grid;
+    grid-template-columns: 7;
+    grid-template-rows: 5;
+    font-family: 'Paper Mono';
+    font-size: calc(0.5vw + 8pt);
+    border-style: solid;
+    border-color: #fafafa;
+}
+
+.code-calendar__cell {
+    border-style: solid;
+    border-color: #fafafa;
+    width: min(12vw, 5rem);
+    height: min(12vw, 5rem);
+    background-color: #1a1a1a;
+}
+
+.code-calendar__cell--completed {
+    background-color: green;
+}
+
+.code-calendar__cell--enlarged {
+    z-index: 10;
+    font-size: calc(0.5vw + 4pt);
+    transform: scale(2);
+    transition: transform 0.1s;
+}
+
+.code-calendar__title {
+    grid-column: 3 / 8;
+    grid-row: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(60vw, 25rem);
+    height: min(12vw, 5rem);
+
+    background-color: #1a1a1a;
+
+    border-style: solid;
+    border-color: #fafafa;
+
+    padding: 0.5rem;
+}
+
+.code-calendar__title--enlarged {
+    z-index: 10;
+    font-size: calc(0.5vw + 2pt);
+    transform: scale(2);
+
+    transition: transform 0.1s;
 }
