@@ -1,8 +1,8 @@
 const CODE_CALENDAR_WRAPPER = document.querySelector(".code-calendar");
 const PROJECTS = [
     "this calendar; barcode generator", "barcode generator (first main section)", "new ambient scene??", "barcode generator again...", "lost souls (what the new ambient scene becomes)", "like barely even 10 lines of code", "ambient thingy visuals",
-    "REFACTORINGGGGG", "more ambient stuff...", "", "", "piecing together like 3 seperate projects into one", "ESS database config & linux stuff", "",
-    "", "", "", "", "", "", "",
+    "REFACTORINGGGGG", "more ambient stuff...", "", "", "piecing together like 3 seperate projects into one", "ESS database config & linux stuff", "sound design and landing page for acousmatic pieces",
+    "THE LITTLE GUYS ARE DONE", "", "refactoring classes mostly", "", "", "", "",
     "", "", "", "", "", "", "",
     "", "",
 ]
